@@ -7,6 +7,7 @@ import android.view.OrientationEventListener
 import android.view.Surface
 import com.mrousavy.camera.core.types.Orientation
 import com.mrousavy.camera.core.types.OutputOrientation
+import com.mrousavy.camera.core.types.CameraOrientation
 
 class OrientationManager(private val context: Context, private val callback: Callback) {
   companion object {
@@ -16,6 +17,8 @@ class OrientationManager(private val context: Context, private val callback: Cal
   private var targetOutputOrientation = OutputOrientation.DEVICE
   private var lastOutputOrientation: Orientation? = null
   private var lastPreviewOrientation: Orientation? = null
+
+  var cameraOrientation: CameraOrientation = CameraOrientation.PORTRAIT
 
   // Screen Orientation Listener
   private var screenRotation = Surface.ROTATION_0
@@ -40,6 +43,10 @@ class OrientationManager(private val context: Context, private val callback: Cal
         // phone is laying flat - orientation is unknown! Avoid sending out event.
         return
       }
+
+         if (cameraOrientation == CameraOrientation.LANDSCAPE) {
+        screenRotation = Surface.ROTATION_90
+         }
       deviceRotation = degreesToSurfaceRotation(rotationDegrees)
       maybeNotifyOrientationChanged()
     }

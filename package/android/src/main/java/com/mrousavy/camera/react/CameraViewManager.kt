@@ -80,6 +80,17 @@ class CameraViewManager : ViewGroupManager<CameraView>() {
     view.audio = audio
   }
 
+
+  @ReactProp(name = "orientation")
+  fun setAngleOrientation(view: CameraView, orientation: String?) {
+    if (orientation != null) {
+      val newOrientation = CameraOrientation.fromUnionValue(orientation)
+      view.cameraOrientation = newOrientation
+    } else {
+      view.cameraOrientation = CameraOrientation.PORTRAIT
+    }
+  }
+
   @ReactProp(name = "enableLocation")
   fun setEnableLocation(view: CameraView, enableLocation: Boolean) {
     view.enableLocation = enableLocation

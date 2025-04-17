@@ -14,6 +14,7 @@ export * from './types/PixelFormat'
 export * from './types/Point'
 export * from './types/VideoFile'
 export * from './types/CodeScanner'
+export * from './types/CameraOrientation'
 
 // Devices API
 export * from './devices/getCameraFormat'

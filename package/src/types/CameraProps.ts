@@ -7,6 +7,7 @@ import type { ISharedValue } from 'react-native-worklets-core'
 import type { SkImage } from '@shopify/react-native-skia'
 import type { OutputOrientation } from './OutputOrientation'
 import type { Orientation } from './Orientation'
+import type { CameraOrientation } from './CameraOrientation'
 
 export interface ReadonlyFrameProcessor {
   frameProcessor: (frame: Frame) => void
@@ -320,6 +321,16 @@ export interface CameraProps extends ViewProps {
    * @default false (back camera), true (front camera)
    */
   isMirrored?: boolean
+
+  /**
+   * Specifies the camera view orientation.
+   *
+   * - `'portrait'`: Camera view is in portrait mode
+   * - `'landscape'`: Camera view is in landscape mode
+   *
+   * @default 'portrait'
+   */
+  orientation?: CameraOrientation
 
   //#region Events
   /**

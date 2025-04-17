@@ -93,6 +93,20 @@ class CameraView(context: Context) :
       field = value
       updatePreview()
     }
+
+
+
+  //This is going to handle when a screen is using landscape mode 
+  var cameraOrientation: CameraOrientation = CameraOrientation.PORTRAIT
+    set(value) {
+      field = value
+
+      //print on kotlin console
+      Log.i(TAG, "cameraOrientation: $value")
+      cameraSession.orientationManager.cameraOrientation = value;
+      update()
+    }
+    
   var enableZoomGesture = false
     set(value) {
       field = value
